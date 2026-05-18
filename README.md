@@ -24,5 +24,5 @@ Our vision is to revolutionize how academic and student community projects are f
 
 > **Important**
 > 
-> **CONTRACT ID:** `CDDFKXIDF7Z3PIJEZVEYN2RPACDOK3MJ4ZPY6PI3PHIL46UIF64VE2AW`
+> **CONTRACT ID:** `CBWQSCEJ6YZZ7VZR62LP3DKCBDRRPT5ZVHLWDLZFG56E3QZ2XA2IH4FC`
 > **NETWORK:** Stellar Testnet (Soroban)
