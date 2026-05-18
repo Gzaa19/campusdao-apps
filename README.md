@@ -1,6 +1,5 @@
 # CampusDAO
 
-![CampusDAO Banner](https://img.shields.io/badge/Status-Active-brightgreen?style=for-the-badge)
 ![Stellar](https://img.shields.io/badge/Stellar-Soroban-black?style=for-the-badge&logo=stellar)
 ![Next.js](https://img.shields.io/badge/Next.js-15+-black?style=for-the-badge&logo=nextdotjs)
 
