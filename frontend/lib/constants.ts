@@ -3,30 +3,51 @@
 // ============================================================
 
 /**
- * Soroban RPC endpoint URL (Stellar Testnet).
+ * Throws a descriptive error when a required env var is missing.
+ * Note: Next.js inlines `process.env.NEXT_PUBLIC_*` only with static
+ * keys, so each var must be referenced literally (no dynamic lookup).
  */
-export const SOROBAN_RPC_URL =
-  process.env.NEXT_PUBLIC_SOROBAN_RPC_URL ??
-  "https://soroban-testnet.stellar.org";
+function requireEnv(name: string, value: string | undefined): string {
+  if (!value || value.trim() === "") {
+    throw new Error(
+      `Missing required environment variable: ${name}. ` +
+        `Set it in your .env file or deployment environment.`,
+    );
+  }
+  return value;
+}
+
+/**
+ * Soroban RPC endpoint URL.
+ */
+export const SOROBAN_RPC_URL = requireEnv(
+  "NEXT_PUBLIC_SOROBAN_RPC_URL",
+  process.env.NEXT_PUBLIC_SOROBAN_RPC_URL,
+);
 
 /**
  * Stellar network passphrase for the target network.
  */
-export const NETWORK_PASSPHRASE =
-  process.env.NEXT_PUBLIC_SOROBAN_NETWORK_PASSPHRASE ??
-  "Test SDF Network ; September 2015";
+export const NETWORK_PASSPHRASE = requireEnv(
+  "NEXT_PUBLIC_SOROBAN_NETWORK_PASSPHRASE",
+  process.env.NEXT_PUBLIC_SOROBAN_NETWORK_PASSPHRASE,
+);
 
 /**
  * Deployed CampusDAO smart contract ID.
  */
-export const CONTRACT_ID =
-  process.env.NEXT_PUBLIC_CONTRACT_ID ??
-  "CCX3VZKUFA44JHBL3TG3R3PA5ZVCN2F53VRL4DITCDKKSDYENQ4MHFRD";
+export const CONTRACT_ID = requireEnv(
+  "NEXT_PUBLIC_CONTRACT_ID",
+  process.env.NEXT_PUBLIC_CONTRACT_ID,
+);
 
 /**
  * Target network identifier used by Freighter.
  */
-export const NETWORK = process.env.NEXT_PUBLIC_NETWORK ?? "testnet";
+export const NETWORK = requireEnv(
+  "NEXT_PUBLIC_NETWORK",
+  process.env.NEXT_PUBLIC_NETWORK,
+);
 
 /**
  * Default transaction timeout in seconds.

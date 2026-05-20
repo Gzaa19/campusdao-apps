@@ -99,7 +99,7 @@ export const useWalletStore = create<WalletState>((set, get) => ({
         const memberStatus = await isMember(pubKey);
         role = memberStatus ? "member" : "guest";
       } catch {
-        // Membership check may fail on testnet — default to guest
+        // Membership check may fail on mainnet — default to guest
         console.warn("Could not verify membership, defaulting to guest");
       }
 

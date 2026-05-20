@@ -34,9 +34,9 @@ Our vision is to revolutionize how academic and student community projects are f
 
 ## Deployed Smart Contract Details
 
-> **CONTRACT ID:** `CCX3VZKUFA44JHBL3TG3R3PA5ZVCN2F53VRL4DITCDKKSDYENQ4MHFRD`
-> **NETWORK:** Stellar Testnet (Soroban)
-> **ADMIN:** `GDSC3ZHOEGOVQQIXYAPS6TQ6HRF3SHARDDSDTM5GUXCBDSHDKXGE4CJE`
+> **CONTRACT ID:** `CCFFNPDND6L6GHSOCBZUX35Y52K6MBGV2EKONDT7VSULGTYGRG5IQSM3`
+> **NETWORK:** Stellar Mainnet (Soroban)
+> **ADMIN:** `GBAMRU7IH5YEU7P3BB2IPO5FNRCEARFFWRFB7OINVWEE2GCAWHLOA23I`
 
 ---
 
@@ -71,12 +71,12 @@ npm install
 ```
 
 **4. Environment Variables**
-Inside the `frontend` folder, duplicate the `.env.example` file and rename it to `.env.local`. Fill in the values (if you are deploying your own contract, update the `NEXT_PUBLIC_CONTRACT_ID`):
+Inside the `frontend` folder, duplicate the `.env.example` file and rename it to `.env`. Fill in the values (if you are deploying your own contract, update the `NEXT_PUBLIC_CONTRACT_ID`):
 ```env
-NEXT_PUBLIC_SOROBAN_RPC_URL=https://soroban-testnet.stellar.org
-NEXT_PUBLIC_SOROBAN_NETWORK_PASSPHRASE=Test SDF Network ; September 2015
-NEXT_PUBLIC_CONTRACT_ID=CCX3VZKUFA44JHBL3TG3R3PA5ZVCN2F53VRL4DITCDKKSDYENQ4MHFRD
-NEXT_PUBLIC_NETWORK=testnet
+NEXT_PUBLIC_SOROBAN_RPC_URL=https://mainnet.sorobanrpc.com
+NEXT_PUBLIC_SOROBAN_NETWORK_PASSPHRASE=Public Global Stellar Network ; September 2015
+NEXT_PUBLIC_CONTRACT_ID=YOUR_MAINNET_CONTRACT_ID_HERE
+NEXT_PUBLIC_NETWORK=mainnet
 ```
 
 ---
@@ -105,15 +105,15 @@ stellar contract build
 
 **2. Generate a Stellar Identity (if you don't have one)**
 ```bash
-stellar keys generate admin --network testnet
+stellar keys generate admin --network mainnet
 ```
 
-**3. Deploy the Contract to Testnet**
+**3. Deploy the Contract to Mainnet**
 ```bash
 stellar contract deploy \
   --wasm target/wasm32v1-none/release/campusdao.wasm \
   --source admin \
-  --network testnet
+  --network mainnet
 ```
 *(Copy the generated Contract ID starting with `C...`)*
 
@@ -123,13 +123,13 @@ The DAO needs to know who the `admin` is and which token acts as the treasury fu
 stellar contract invoke \
   --id <YOUR_NEW_CONTRACT_ID> \
   --source admin \
-  --network testnet \
+  --network mainnet \
   -- \
   initialize \
   --admin <YOUR_ADMIN_PUBLIC_KEY> \
-  --token_address CDLZFC3SYJYDZT7K67VZ75HPJVIEUVNIXF47ZG2FB2RMQQVU2HHGCYSC
+  --token_address CAS3J7GYLGXMF6TDJBBYYSE3HQ6BBSMLNUQ34T6TZMYMW2EVH34XOWMA
 ```
-*Note: Once initialized, update your `frontend/.env.local` with the new Contract ID and restart the frontend server.*
+*Note: The `token_address` above is the native XLM SAC contract on Mainnet. Once initialized, update your `frontend/.env` with the new Contract ID and restart the frontend server.*
 
 ---
 
@@ -137,7 +137,7 @@ stellar contract invoke \
 
 ### 1. Connecting Wallet
 - Open the application and click **"Hubungkan Dompet" (Connect Wallet)** in the top right corner.
-- Approve the connection request in your Freighter extension. Ensure Freighter is set to the **Testnet** network.
+- Approve the connection request in your Freighter extension. Ensure Freighter is set to the **Mainnet** network.
 
 ### 2. Admin Credentialing (Access Control)
 By default, standard wallets cannot create proposals or vote. An Admin must issue them a credential.
@@ -168,7 +168,7 @@ By default, standard wallets cannot create proposals or vote. An Admin must issu
 ## Troubleshooting
 
 * **`UnreachableCodeReached` Error when creating a proposal:** Your wallet address has not been registered as an active DAO member. Ask the Admin to issue you a credential via the Admin page.
-* **`TxFailed` / Freighter Error:** Ensure your Freighter wallet is set to **Testnet** and that your account is funded with testnet XLM. You can get free testnet XLM from the [Stellar Laboratory Faucet](https://laboratory.stellar.org/#account-creator?network=testnet).
+* **`TxFailed` / Freighter Error:** Ensure your Freighter wallet is set to **Mainnet** and that your account is funded with real XLM.
 * **Missing Freighter Extension:** The app will prompt you if Freighter is not detected in your browser. Please install it and refresh the page.
 
 ---

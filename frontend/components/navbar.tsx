@@ -35,7 +35,7 @@ export function Navbar() {
               <span className="text-primary">DAO</span>
             </span>
             <span className="hidden text-[10px] text-muted-foreground sm:block">
-              Stellar · Testnet
+              Stellar · Mainnet
             </span>
           </div>
         </Link>

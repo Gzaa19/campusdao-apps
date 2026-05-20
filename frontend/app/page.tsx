@@ -120,7 +120,7 @@ export default function DashboardPage() {
             <div>
               <div className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-primary/10 px-3 py-1 text-xs font-medium text-primary ring-1 ring-primary/20">
                 <Vote className="h-3 w-3" />
-                Stellar Testnet · Live
+                Stellar Mainnet · Live
               </div>
               <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">
                 Tata Kelola

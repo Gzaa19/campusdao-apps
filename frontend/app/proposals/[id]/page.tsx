@@ -316,7 +316,7 @@ export default function ProposalDetailPage() {
                       <User className="h-3.5 w-3.5" /> Pembuat
                     </span>
                     <a
-                      href={`https://stellar.expert/explorer/testnet/account/${proposal.creator}`}
+                      href={`https://stellar.expert/explorer/public/account/${proposal.creator}`}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="flex items-center gap-1 font-mono text-xs text-primary hover:underline"
